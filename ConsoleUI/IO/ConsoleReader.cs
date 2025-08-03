@@ -117,14 +117,14 @@ public class ConsoleReader
     /// </summary>
     /// <param name="caption">Caption to be shown to the usser, on the input prompt</param>
     /// <param name="attempts">
-    /// Gives the user this number of attempts to entera valid input
+    /// Gives the user this number of attempts to enter a valid input
     /// </param>
     /// <param name="required">
-    /// Disallow blank input? if true, a <see cref="ConsoleReaderAborted"/> exception
+    /// Disallow blank input. if true, a <see cref="ConsoleReaderAborted"/> exception
     /// will be raised if nothing is entered by the user
     /// </param>
     /// <param name="defaultValue">
-    /// Value to return if the user enteres nothing on the prompt (and only if
+    /// Value to return if the user enters nothing on the prompt (and only if
     /// required = false)
     /// </param>
     /// <returns></returns>
@@ -166,6 +166,14 @@ public class ConsoleReader
 }
 
 
+/// <summary>
+/// Raised when a user enters nothing on the input
+/// </summary>
+/// <param name="msg"></param>
 public class ConsoleReaderAborted(string msg) : Exception(msg) { }
 
+/// <summary>
+/// Raised for invalid imput by a user
+/// </summary>
+/// <param name="msg"></param>
 public class ConsoleReaderInvalidInput(string msg) : Exception(msg) { }

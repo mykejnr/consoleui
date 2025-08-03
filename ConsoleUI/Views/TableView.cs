@@ -1,6 +1,5 @@
-﻿using ConsoleUI.IO;
-using ConsoleUI.Views.Components;
-using ConsoleUI.Views.Extenstions;
+﻿using ConsoleUI.Views.Components;
+using ConsoleUI.Views.Extensions;
 
 namespace ConsoleUI.Views;
 
@@ -14,16 +13,36 @@ namespace ConsoleUI.Views;
 /// </typeparam>
 public class TableView<T>  where T : ITableItem
 {
+    /// <summary>
+    /// Get a list of <see cref="TableColumn"/>s
+    /// </summary>
     public List<TableColumn> Columns { get; private set; } = [];
+    /// <summary>
+    /// Get <see cref="TableBuilderOptions"/> used for configuring the table
+    /// </summary>
     public TableBuilderOptions Options { get; private set; }
+    /// <summary>
+    /// Get a list of <see cref="ITableItem"/>s of type <typeparamref name="T"/>
+    /// </summary>
     public List<T> Items { get; private set; }
+    /// <summary>
+    /// The computed table width
+    /// </summary>
     public int TableWidth { get; private set; }
+    /// <summary>
+    /// List of table rows. Each row is a list of raw string representation of the cells
+    /// </summary>
     public List<List<string>> Rows { get; private set; }
-    private string HorizontalBorder { get; }
 
+    private string HorizontalBorder { get; }
     private readonly List<string> _footer = [];
     private readonly string MARGIN_LEFT_STR;
 
+    /// <summary>
+    /// Create an instance of <see cref="TableView{T}"/>
+    /// </summary>
+    /// <param name="items"></param>
+    /// <param name="options"></param>
     public TableView(List<T> items, TableBuilderOptions options)
     {
         Options = options;
@@ -42,7 +61,7 @@ public class TableView<T>  where T : ITableItem
         Options.CellPadding ??= new() { Left = 1, Right = 1 };
     }
 
-    public List<TableColumn> GenerateColumns()
+    private List<TableColumn> GenerateColumns()
     {
         return Options.Columns.Select(name => new TableColumn
         { 

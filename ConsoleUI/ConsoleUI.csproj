@@ -11,8 +11,8 @@
 	  <Authors>Michael Mensah</Authors>
 	  <Company>MikelTek</Company>
 	  <Description>A very simple view library for console application</Description>
-	  <PackageProjectUrl>https://github.com/yourusername/MyAwesomeLibrary</PackageProjectUrl>
-	  <RepositoryUrl>https://github.com/yourusername/MyAwesomeLibrary</RepositoryUrl>
+	  <PackageProjectUrl>https://github.com/mykejnr/consoleui</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/mykejnr/consoleui</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>csharp;library;utility</PackageTags>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -27,7 +27,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<None Include="../README.md" Pack="true" PackagePath="\" />
+	<None Include="README.md" Pack="true" PackagePath="\" />
+	<None Include=".github\workflows\publish-nuget.yml" />
   </ItemGroup>
 
 </Project>

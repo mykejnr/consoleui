@@ -1,14 +1,11 @@
-﻿using ConsoleUI.IO;
-using ConsoleUI.Views.Components;
-using ConsoleUI.Views.Extenstions;
+﻿using ConsoleUI.Views.Components;
+using ConsoleUI.Views.Extensions;
 
 namespace ConsoleUI.Views;
 
 /// <summary>
-/// Class to render a menu and execute selected menu actions
+/// Create a menu and execute selected menu actions
 /// </summary>
-/// <param name="menuItems"></param>
-/// <param name="title"></param>
 public class Menu
 {
     private int _width;
@@ -16,11 +13,19 @@ public class Menu
     // Extract the action menu items that are not seperators ("-")
     private readonly List<MenuItem> _actionMenus;
     MenuBuilderOptions _builderOptions;
-
     private readonly string MARGIN_LEFT_STR;
 
-    public MenuBuilderOptions BO => _builderOptions;
+    private MenuBuilderOptions BO => _builderOptions;
 
+    /// <summary>
+    /// Create a menu with list of configured menu items.
+    /// </summary>
+    /// <param name="menuItems">
+    /// Menu items with actions to be executed
+    /// </param>
+    /// <param name="builderOptions">
+    /// Menu configurations
+    /// </param>
     public Menu(List<MenuItem> menuItems, MenuBuilderOptions builderOptions)
     {
         _builderOptions = builderOptions;
@@ -159,7 +164,7 @@ public class Menu
         return MARGIN_LEFT_STR + "+" + "".PadRight(_width, '-') + "+";
     }
 
-    public int ComputeWidth()
+    private int ComputeWidth()
     {
         // The width of the menu is the menu item with longest name,
         // or the width of title, if it is longer thatn all items in the menu
